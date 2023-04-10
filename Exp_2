@@ -1,0 +1,96 @@
+fork - create a child process
+
+	SYNOPSIS
+	       #include <unistd.h>
+
+	       pid_t fork(void);
+
+	DESCRIPTION
+	       fork()  creates  a  new  process  by  duplicating  the callingprocess.
+
+getpid - get process identification.
+
+	SYNOPSIS
+	       #include <sys/types.h>
+	       #include <unistd.h>
+
+	       pid_t getpid(void);
+
+	DESCRIPTION
+	       getpid() returns the process ID of the calling process.
+
+getppid - get process identification
+
+	SYNOPSIS
+	       #include <sys/types.h>
+	       #include <unistd.h>
+
+	       pid_t getppid(void);
+
+	DESCRIPTION
+	       getppid()  returns the process ID of the parent of the calling process.
+
+opendir - open a directory
+
+	SYNOPSIS
+	       #include <sys/types.h>
+	       #include <dirent.h>
+
+	       DIR *opendir(const char *name);
+
+	DESCRIPTION
+	       The opendir() function opens a directory stream corresponding to  the directory name, and returns a pointer to the directory stream.
+
+readdir - read a directory
+
+	SYNOPSIS
+	       #include <dirent.h>
+
+	       struct dirent *readdir(DIR *dirp);
+
+	DESCRIPTION
+	       The readdir() function returns a pointer to a dirent structure representing the next directory entry in the directory  stream pointed  to  by  dirp.
+
+
+
+closedir - close a directory
+
+	SYNOPSIS
+	       #include <sys/types.h>
+
+	       #include <dirent.h>
+
+	       int closedir(DIR *dirp);
+
+	DESCRIPTION
+	       The closedir() function closes the directory stream associated with dirp.
+
+stat - display file or file system status
+
+	SYNOPSIS
+	       stat [OPTION]... FILE...
+
+	DESCRIPTION
+	       Display file or file system status.
+
+	       -L, --dereference
+	              follow links
+
+	       -f, --file-system
+	              display file system status instead of file status
+
+	       -t, --terse
+	              print the information in terse form
+
+exec - execute a file
+
+	SYNOPSIS
+	       #include <unistd.h>
+
+	       extern char **environ;
+
+	       int execl(const char *path, const char *arg, ...
+	                       /* (char  *) NULL */);
+
+	DESCRIPTION
+	       The exec() family of functions replaces  the  current process image  with  a  new process image.

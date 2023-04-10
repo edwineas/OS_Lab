@@ -1,0 +1,310 @@
+pwd - print name of current/working directory
+
+       SYNOPSIS
+              pwd [OPTION]...
+
+       DESCRIPTION
+              Print the full filename of the current working directory.
+
+              -L, --logical
+                     use PWD from environment, even if it contains symlinks
+
+              -P, --physical
+                     avoid all symlinks
+
+
+
+
+ls - list directory contents
+       SYNOPSIS
+              ls [OPTION]... [FILE]...
+
+       DESCRIPTION
+              List  information  about  the FILEs (the current directory by default).
+
+              Sort entries alphabetically if none of -cftuvSUX nor --sort  is specified.
+
+              Mandatory  arguments  to  long  options are mandatory for short options too.
+
+              -a, --all
+                     do not ignore entries starting with .
+
+              -A, --almost-all
+                     do not list implied . and ..
+
+              --author
+                     with -l, print the author of each file
+
+              -b, --escape
+                     print C-style escapes for nongraphic characters
+
+              -d, --directory
+                     list directories themselves, not their contents
+
+              -r, --reverse
+                     reverse order while sorting
+
+
+
+cd - change directory
+
+mkdir - make directories
+
+       SYNOPSIS
+              mkdir [OPTION]... DIRECTORY...
+
+       DESCRIPTION
+              Create the DIRECTORY(ies), if they do not already exist.
+
+              Mandatory  arguments  to  long options are mandatory for short
+              options too.
+
+              -m, --mode=MODE
+                     set file mode (as in chmod), not a=rwx - umask
+
+              -p, --parents
+                     no error if existing, make parent directories as needed
+
+              -v, --verbose
+                     print a message for each created directory
+
+              -Z     set SELinux security context of each created  directory
+                     to the default type
+
+              --context[=CTX]
+                     like -Z, or if CTX is specified then set the SELinux or
+                     SMACK security context to CTX
+
+
+rmdir - remove empty directories
+
+       SYNOPSIS
+              rmdir [OPTION]... DIRECTORY...
+
+       DESCRIPTION
+              Remove the DIRECTORY(ies), if they are empty.
+
+              --ignore-fail-on-non-empty
+
+                     ignore each failure that is solely because a directory
+
+                     is non-empty
+
+              -p, --parents
+                     remove  DIRECTORY  and  its  ancestors; e.g., 'rmdir -p
+                     a/b/c' is similar to 'rmdir a/b/c a/b a'
+
+              -v, --verbose
+                     output a diagnostic for every directory processed
+
+
+
+man - an interface to the on-line reference manuals
+
+       SYNOPSIS
+              man  [-C file] [-d] [-D] 
+       DESCRIPTION
+              man is the system's manual pager.
+              -C file, --config-file=file
+                     Use  this  user  configuration  file  rather  than  the
+                     default of ~/.manpath.
+
+              -d, --debug
+                     Print debugging information.
+
+
+
+cp - copy files and directories
+
+       SYNOPSIS
+              cp [OPTION]... [-T] SOURCE DEST
+              cp [OPTION]... SOURCE... DIRECTORY
+              cp [OPTION]... -t DIRECTORY SOURCE...
+
+       DESCRIPTION
+              Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+              Mandatory  arguments  to  long options are mandatory for short options too.
+
+              -a, --archive
+                     same as -dR --preserve=all
+
+              --attributes-only
+                     don't copy the file data, just the  attributes
+
+              --backup[=CONTROL]
+                     make a backup of each existing destination file
+
+              -b     like --backup but does not accept an argument
+
+              --copy-contents
+                     copy contents of special files when recursive
+
+              -d     same as --no-dereference --preserve=links
+
+
+
+mv - move (rename) files
+
+       SYNOPSIS
+              mv [OPTION]... [-T] SOURCE DEST
+              mv [OPTION]... SOURCE... DIRECTORY
+              mv [OPTION]... -t DIRECTORY SOURCE...
+
+       DESCRIPTION
+              Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.
+
+              Mandatory  arguments  to  long options are mandatory for short
+              options too.
+
+              --backup[=CONTROL]
+                     make a backup of each existing destination file
+
+              -b     like --backup but does not accept an argument
+
+              -f, --force
+                     do not prompt before overwriting
+
+              -i, --interactive
+                     prompt before overwrite
+
+              -n, --no-clobber
+                     do not overwrite an existing file
+
+
+
+cat - concatenate files and print on the standard output
+
+       SYNOPSIS
+              cat [OPTION]... [FILE]...
+
+       DESCRIPTION
+              Concatenate FILE(s) to standard output.
+
+              With no FILE, or when FILE is -, read standard input.
+
+              -A, --show-all
+                     equivalent to -vET
+
+              -b, --number-nonblank
+                     number nonempty output lines, overrides -n
+
+              -e     equivalent to -vE
+
+              -E, --show-ends
+                     display $ at end of each line
+
+              -n, --number
+                     number all output lines
+
+              -s, --squeeze-blank
+                     suppress repeated empty output lines
+
+
+echo - display a line of text
+
+       SYNOPSIS
+              echo [SHORT-OPTION]... [STRING]...
+              echo LONG-OPTION
+
+       DESCRIPTION
+              Echo the STRING(s) to standard output.
+
+              -n     do not output the trailing newline
+
+              -e     enable interpretation of backslash escapes
+
+              -E     disable interpretation of backslash escapes (default)
+
+
+
+chmod - change file mode bits
+
+       SYNOPSIS
+              chmod [OPTION]... MODE[,MODE]... FILE...
+              chmod [OPTION]... OCTAL-MODE FILE...
+              chmod [OPTION]... --reference=RFILE FILE...
+
+       DESCRIPTION
+              This  manual  page  documents the GNU version of chmod.
+              -c, --changes
+                     like verbose but report only when a change is made
+
+              -f, --silent, --quiet
+                     suppress most error messages
+
+              -v, --verbose
+                     output a diagnostic for every file processed
+
+              --no-preserve-root
+                     do not treat '/' specially (the default)
+
+              --preserve-root
+                     fail to operate recursively on '/'
+
+              --reference=RFILE
+                     use RFILE's mode instead of MODE values
+
+ping, ping6 - send ICMP ECHO_REQUEST to network hosts
+
+       SYNOPSIS
+              ping [-aAbBdDfhLnOqrRUvV] [-c count] [-F flowlabel] [-i inter‐
+              val]  [-I  interface]  [-l  preload]  [-m  mark]  [-M   pmtud‐
+              isc_option]  [-N  nodeinfo_option]  [-w deadline] [-W timeout]
+              [-p pattern] [-Q tos] [-s packetsize] [-S sndbuf] [-t ttl] [-T
+              timestamp option] [hop ...] destination
+
+       DESCRIPTION
+              ping  uses the ICMP protocol's mandatory ECHO_REQUEST datagram
+              to elicit an  ICMP  ECHO_RESPONSE  from  a  host  or  gateway.
+
+              -a     Audible ping.
+
+              -b     Allow pinging a broadcast address.
+
+              -B     Do not allow ping to change source address of  probes.
+                     The address is bound to one selected when ping starts.
+
+              -c count
+                     Stop  after  sending  count  ECHO_REQUEST packets. With deadline option, ping waits for count ECHO_REPLY packets, until the timeout expires.
+
+              -d     Set  the  SO_DEBUG  option  on  the  socket being used.
+                     Essentially, this socket option is not  used by  Linux kernel.
+
+              -D     Print  timestamp  (unix  time + microseconds as in gettimeofday) before each line.
+
+
+grep, egrep, fgrep, rgrep - print lines matching a pattern
+
+       SYNOPSIS
+              grep [OPTIONS] PATTERN [FILE...]
+              grep [OPTIONS] [-e PATTERN]...  [-f FILE]...  [FILE...]
+
+       DESCRIPTION
+              grep  searches  the  named  input FILEs for lines containing a match to the given PATTERN.
+
+cut - remove sections from each line of files
+
+       SYNOPSIS
+              cut OPTION... [FILE]...
+
+       DESCRIPTION
+              Print  selected parts of lines from each FILE to standard out‐
+              put.
+
+              With no FILE, or when FILE is -, read standard input.
+
+              Mandatory arguments to long options are  mandatory  for  short
+              options too.
+
+              -b, --bytes=LIST
+                     select only these bytes
+
+              -c, --characters=LIST
+                     select only these characters
+
+              -d, --delimiter=DELIM
+                     use DELIM instead of TAB for field delimiter
+              -z, --zero-terminated
+                     line delimiter is NUL, not newline
+
