@@ -20,15 +20,16 @@ void main()
 	{
 		printf("Enter the arrival time and burst time of P%d : ",i);
 		scanf("%d%d",&a[i][1],&a[i][2]);
-		a[i][3]=a[i][2];
+		a[i][3]=a[i][2];	
 		
 	}
-	for(i=0;i<n;i++) //sorting process
+	for(i=0;i<n-1;i++) //sorting process
 	{
-		for(j=0;j<n-i;j++)
+		for(j=0;j<n-i-1;j++)
 		{
 			if(a[j][1]>a[j+1][1])
 			{
+			printf("remaining time of %d : 	%d\n",i,a[i][3]);
 				for(k=1;k<=3;k++)
 				{
 					temp=a[j][k];
@@ -38,11 +39,12 @@ void main()
 				
 			}		
 		}
-	}
+	} 	
 	while(cp<n)//if process available
 	{
 		for(i=0;i<n;i++)
 		{
+		
 			if(a[i][3]>0)
 			{
 				printf("Time %d: Runnig Process:%d\n",time,i);
@@ -50,7 +52,7 @@ void main()
 				time += q;
 				if(a[i][3]<=0)
 				{
-					printf("Time %d: Process %d finished\n", time, i);
+					printf("Process %d finished\n", i);
 					cp++;
 					time+=a[i][3];
 					a[i][4]=time;
@@ -62,9 +64,11 @@ void main()
 	{
 		a[i][5]=a[i][4]-a[i][1];
 		ttat+=a[i][5];
-		a[i][6]=a[i][5]-a[i][2];
+		a[i][6]=a[i][5]-a[i][2]; 	 		 	
 		twt+=a[i][6];
 	}
+	awt = twt/n;
+	atat = ttat/n;	
 	printf("P\tat\tbt\tcmpt\ttat\twt\n");
 	for(i=0;i<n;i++) //printing
 	{
