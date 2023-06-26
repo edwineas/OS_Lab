@@ -29,7 +29,6 @@ void main()
 		{
 			if(a[j][1]>a[j+1][1])
 			{
-			printf("remaining time of %d : 	%d\n",i,a[i][3]);
 				for(k=1;k<=3;k++)
 				{
 					temp=a[j][k];

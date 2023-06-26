@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int m=1, f=0, e=5;
+int m=1, f=0, e=3;
 
 int wait(int s){
 	if(s!=0)
@@ -35,7 +35,8 @@ void main(){
 		printf("\n---Choose the option---\n1.Produce Item\n2.Consume Item\n3.Exit\n");
 		scanf("%d",&opt);
 		switch(opt){
-			case 1:if(m==1 && e!=0)
+			case 1:
+				if(m==1 && e!=0)
 					producer();
 				else
 					printf("Producer is waiting\n");

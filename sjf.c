@@ -71,7 +71,6 @@ int main()
 					a[j][k]=a[j+1][k];
 					a[j+1][k]=temp;
 				}
-				
 			}		
 		}
 	}
