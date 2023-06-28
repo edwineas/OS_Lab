@@ -4,7 +4,7 @@ int main()
  	int n;
 	printf("Enter the number of process to be inserted : ");
 	scanf("%d",&n);
-	int a[n][5], i, j, temp;
+	int a[n][5], i, j,k , temp;
 	float  atat, awt, ttat=0, twt=0;
 	for(i=0;i<n;i++) //collecting process details
 	{
@@ -17,13 +17,12 @@ int main()
 		{
 			if(a[j][1]>a[j+1][1])
 			{
-				temp=a[j][1];
-				a[j][1]=a[j+1][1];
-				a[j+1][1]=temp;
-				temp=a[j][2];
-				a[j][2]=a[j+1][2];
-				a[j+1][2]=temp;
-				
+				for(k=1;k<=2;k++)
+				{
+					temp=a[j][k];
+					a[j][k]=a[j+1][k];
+					a[j+1][k]=temp;
+				}
 			}		
 		}
 	}
