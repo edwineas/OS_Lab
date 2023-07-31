@@ -58,25 +58,22 @@ int main()
 
 /*
 START
-Attach necessary libraries (already done in the provided code).
 Initialize arrays bsize, psize, and all, and variables m, n, i, and j.
 Prompt the user to enter the number of blocks (m) and read the input.
 Prompt the user to enter the size of each block (bsize) using a loop to read the inputs.
 Prompt the user to enter the number of processes (n) and read the input.
-Prompt the user to enter the size of each process (psize) using a loop to read the inputs, and set all elements of all to -1 to indicate no process is allocated initially.
+Prompt the user to enter the size of each process (psize) using a loop to read the inputs, and set all elements of all to -1.
 For each process (psize[i]), find the worst-fit block to allocate it:
-a. Initialize worstplace to -1 (indicating no block is selected yet).
+a. Initialize worstplace to -1.
 b. Iterate through each block (bsize[j]) to find the worst-fit block:
 i. Check if the block has enough space to accommodate the current process (bsize[j] >= psize[i]).
-ii. If the above condition is met, check if worstplace is -1 (no block has been selected yet) or if the current block's size is larger than the previous worst-fit block (bsize[worstplace] < bsize[j]).
-iii. If the current block has more space, update worstplace with the current block index.
-c. If a suitable block is found (worstplace is not -1), store the index of the selected block in all[i], and reduce the size of the block by the size of the allocated process (bsize[worstplace] -= psize[i]).
-Print the allocation results for each process in the format: Process No., Process Size, Block no.:
-a. If all[i] is not -1, print the block number where the process is allocated (all[i] + 1).
-b. If all[i] is -1, print "Not Allocated" for that process.
+ii. If the above condition is met, update worstplace with the index of the current block if it has more space than the previous worst-fit block.
+c. If a suitable block is found (worstplace is not -1), store the index of the selected block in all[i], and reduce the size of the block by the 
+    size of the allocated process (bsize[worstplace] -= psize[i]).
+Print the allocation results for each process in the format: Process No., Process Size, Block no., or "Not Allocated" if not allocated.
 STOP
 */
-
+ 
 /*
 Enter the number of blocks: 5
 Enter the size of each block: 100 200 300 150 250
