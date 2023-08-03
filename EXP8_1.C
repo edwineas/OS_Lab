@@ -55,3 +55,39 @@ int main() {
 
     return 0;
 }
+
+/*
+START
+Initialize variables i, j, page, n, capacity, frame, pagefault, frameindex, and frameavailable.
+Input the number of pages (n), the reference string (RS) of pages (page), and the capacity of frames (capacity).
+Initialize the frames frame with -1 to indicate all frames are initially empty.
+Initialize pagefault, frameindex, and frameavailable to 0.
+Loop through the reference string (page) and simulate the page replacement process:
+a. Check if the current page is already present in any frame.
+b. If the page is not found, allocate it to an available frame or replace a page in the frame at frameindex.
+c. Update the frameindex to the next frame (circularly) using (frameindex + 1) % capacity.
+d. Increment the pagefault counter for each page fault.
+e. Print the reference string (RS) and the current state of the frames after each page reference.
+Print the statistics: total page faults, page hits, page fault ratio, and page hit ratio.
+STOP
+*/
+
+/*
+Enter the number of pages: 10
+Enter the reference string (RS): 7 0 1 2 0 3 0 4 2 3
+Enter the capacity of frames: 4
+RS: 7 | 7 _ _ _
+RS: 0 | 7 0 _ _
+RS: 1 | 7 0 1 _
+RS: 2 | 7 0 1 2
+RS: 0 | 7 0 1 2
+RS: 3 | 3 0 1 2
+RS: 0 | 3 0 1 2
+RS: 4 | 3 4 1 2
+RS: 2 | 3 4 2 2
+RS: 3 | 3 4 2 3
+Page faults: 7
+Page Hits: 3
+Page Fault Ratio: 70.000000
+Page Hit Ratio: 30.000000
+*/
