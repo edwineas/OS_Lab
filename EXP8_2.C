@@ -75,3 +75,23 @@ e. Print the reference string (RS) and the current state of the frames after eac
 Print the statistics: total page faults, page hits, page fault ratio, and page hit ratio.
 STOP
 */
+
+/*
+Enter the number of pages: 10
+Enter the reference string (RS): 7 0 1 2 0 3 0 4 2 3
+Enter the capacity of frames: 4
+RS: 7 | 7 _ _ _
+RS: 0 | 7 0 _ _
+RS: 1 | 7 0 1 _
+RS: 2 | 7 0 1 2
+RS: 0 | 7 0 1 2
+RS: 3 | 3 0 1 2
+RS: 0 | 3 0 1 2
+RS: 4 | 3 0 4 2
+RS: 2 | 3 0 4 2
+RS: 3 | 3 0 4 2
+Page faults: 6
+Page Hits: 4
+Page Fault Ratio: 60.00%
+Page Hit Ratio: 40.00%
+*/

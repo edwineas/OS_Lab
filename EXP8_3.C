@@ -90,21 +90,20 @@ STOP
 Enter the number of pages: 12
 Enter the capacity of frames: 3
 Enter the reference String (RS): 7 0 1 2 0 3 0 4 2 3 1 2
-RS: 7 | 7 _ _
-RS: 0 | 7 0 _
-RS: 1 | 7 0 1
-RS: 2 | 2 0 1
-RS: 0 | 2 0 1
-RS: 3 | 2 0 3
-RS: 0 | 2 0 3
-RS: 4 | 4 0 3
-RS: 2 | 4 2 3
-RS: 3 | 4 2 3
-RS: 1 | 4 1 3
-RS: 2 | 4 1 2
-Page fault: 8 
-Page hit: 4
-Page fault ratio: 66.67%
-Page hit ratio: 33.33%
-
+RS: 7 |  7 _ _
+RS: 0 |  7 0 _
+RS: 1 |  7 0 1
+RS: 2 |  2 0 1
+RS: 0 |  2 0 1
+RS: 3 |  2 0 3
+RS: 0 |  2 0 3
+RS: 4 |  4 0 3
+RS: 2 |  4 0 2
+RS: 3 |  3 0 2
+RS: 1 |  3 0 1
+RS: 2 |  2 0 1
+Page fault: 10
+Page hit: 2
+Page fault ratio: 83.33%
+Page hit ratio: 16.67%
 */
