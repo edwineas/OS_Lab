@@ -81,3 +81,18 @@ int main()
 	}
 	printf("awt:%f | atat:%f\n",awt,atat);
 } 
+
+/*
+Enter the number of processes to be inserted: 4
+Enter the arrival time and burst time of P0: 0 5
+Enter the arrival time and burst time of P1: 1 3
+Enter the arrival time and burst time of P2: 2 8
+Enter the arrival time and burst time of P3: 3 6
+P	at	bt	cmpt	tat	wt
+0	0	5	5	5	0
+1	1	3	8	7	4
+2	2	6	14	12	6
+3	3	8	22	19	11
+awt:6.750000 | atat:10.750000
+
+*/
