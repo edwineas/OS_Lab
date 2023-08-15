@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <limits.h>  // Include this library for using INT_MAX
 
 int main() {
     int bsize[10], psize[10], bno, pno, flags[10], allocation[10], i, j;
@@ -26,18 +25,19 @@ int main() {
     }
     
     for (int i = 0; i < pno; i++) {
-        int bestFitIdx = -1;
+        int worstFitIdx = -1;
         for (int j = 0; j < bno; j++) {
-            if (bsize[j] >= psize[i]) {
-                if (bestFitIdx == -1 || bsize[j] < bsize[bestFitIdx]) {
-                    bestFitIdx = j;
+            if (!flags[j] && bsize[j] >= psize[i]) {
+                if (worstFitIdx == -1 || bsize[j] > bsize[worstFitIdx]) {
+                    worstFitIdx = j;
                 }
             }
         }
         
-        if (bestFitIdx != -1) {
-            allocation[i] = bestFitIdx;
-            bsize[bestFitIdx] -= psize[i];
+        if (worstFitIdx != -1) {
+            allocation[i] = worstFitIdx;
+            flags[worstFitIdx] = 1; // Mark the block as allocated
+            bsize[worstFitIdx] -= psize[i];
         }
     }
     
@@ -51,4 +51,3 @@ int main() {
         }
     }
 }
-
