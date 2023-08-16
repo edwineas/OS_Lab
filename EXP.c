@@ -1,69 +1,78 @@
 #include <stdio.h>
 
 int main() {
-    int referenceString[100], numPages, numFrames, frames[10], pageFaults = 0, pageAges[10] = {0}, pageFrequencies[10] = {0};
+    int np, nr;
 
-    printf("Enter the number of pages: ");
-    scanf("%d", &numPages);
+    printf("Enter the number of processes: ");
+    scanf("%d", &np);
+    printf("Enter the number of resources: ");
+    scanf("%d", &nr);
 
-    printf("Enter the reference string: ");
-    for (int i = 0; i < numPages; i++)
-        scanf("%d", &referenceString[i]);
+    int alloc[np][nr], max[np][nr], avail[nr], need[np][nr], finish[np], safesequence[np];
 
-    printf("Enter the number of frames: ");
-    scanf("%d", &numFrames);
+    // Initialize finish array to 0
+    for (int i = 0; i < np; i++) {
+        finish[i] = 0;
+    }
 
-    for (int i = 0; i < numFrames; i++)
-        frames[i] = -1;
+    // Read allocation matrix
+    printf("Enter the allocation matrix:\n");
+    for (int i = 0; i < np; i++) {
+        for (int j = 0; j < nr; j++)
+            scanf("%d", &alloc[i][j]);
+    }
 
-    for (int i = 0; i < numPages; i++) {
-        int pageFound = 0;
+    // Read maximum matrix
+    printf("Enter the maximum matrix:\n");
+    for (int i = 0; i < np; i++) {
+        for (int j = 0; j < nr; j++)
+            scanf("%d", &max[i][j]);
+    }
 
-        for (int j = 0; j < numFrames; j++) {
-            if (frames[j] == referenceString[i]) {
-                pageFound = 1;
-                pageFrequencies[j]++;
-                break;
-            }
-        }
+    // Read available resources
+    printf("Enter the available matrix:\n");
+    for (int i = 0; i < nr; i++)
+        scanf("%d", &avail[i]);
 
-        if (!pageFound) {
-            int lfuIndex = 0, minFrequency = pageFrequencies[0];
-            int maxAge = pageAges[0]; // Initialize maxAge with the age of the first frame
-            for (int j = 1; j < numFrames; j++) {
-                if (pageFrequencies[j] < minFrequency || (pageFrequencies[j] == minFrequency && pageAges[j] > maxAge)) {
-                    lfuIndex = j;
-                    minFrequency = pageFrequencies[j];
-                    maxAge = pageAges[j]; // Update maxAge when frequency ties
-                }
-            }
-            frames[lfuIndex] = referenceString[i];
-            pageFrequencies[lfuIndex] = 1;
-            pageFaults++;
-            pageAges[lfuIndex]=0;
-        }
-
-        for (int j = 0; j < numFrames; j++) {
-            if (frames[j] != -1)
-                pageAges[j]++;
-        }
-
-        printf("RS: %d | ", referenceString[i]);
-        for (int j = 0; j < numFrames; j++) {
-            if (frames[j] == -1)
-                printf("_ ");
-            else
-                printf("%d ", frames[j]);
+    // Calculate need matrix and print it
+    printf("NEED matrix is:\n");
+    for (int i = 0; i < np; i++) {
+        for (int j = 0; j < nr; j++) {
+            need[i][j] = max[i][j] - alloc[i][j];
+            printf("%d ", need[i][j]);
         }
         printf("\n");
     }
 
-    int pageHits = numPages - pageFaults;
+    // Find a safe sequence
+    int ind = 0;
+    for (int i = 0; i < np; i++) {
+        if (!finish[i]) {
+            int canAllocate = 1;
+            for (int j = 0; j < nr; j++) {
+                if (need[i][j] > avail[j]) {
+                    canAllocate = 0;
+                    break;
+                }
+            }
+            if (canAllocate) {
+                safesequence[ind++] = i;
+                for (int j = 0; j < nr; j++)
+                    avail[j] += alloc[i][j];
+                finish[i] = 1;
+                i = -1;  // Start checking from the beginning again
+            }
+        }
+    }
 
-    printf("Page faults: %d\n", pageFaults);
-    printf("Page Hits: %d\n", pageHits);
-    printf("Page Fault Ratio: %.2f%%\n", (float)pageFaults * 100 / numPages);
-    printf("Page Hit Ratio: %.2f%%\n", (float)pageHits * 100 / numPages);
+    // Print the safe sequence
+    printf("\nFollowing is the SAFE Sequence:\n");
+    for (int i = 0; i < np; i++) {
+        printf("P%d", safesequence[i]);
+        if (i < np - 1)
+            printf(" -> ");
+    }
+    printf("\n");
 
     return 0;
 }
