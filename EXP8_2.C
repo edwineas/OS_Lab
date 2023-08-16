@@ -1,97 +1,63 @@
 #include <stdio.h>
 
 int main() {
-    int pages[100], n, capacity, frame[10], page_faults = 0, frame_index = 0, page_age[10];
+    int referenceString[100], numPages, numFrames, frames[10], pageFaults = 0, frameIndex = 0, pageAges[10];
 
     printf("Enter the number of pages: ");
-    scanf("%d", &n);
+    scanf("%d", &numPages);
 
-    printf("Enter the reference string (RS): ");
-    for (int i = 0; i < n; i++)
-        scanf("%d", &pages[i]);
+    printf("Enter the reference string: ");
+    for (int i = 0; i < numPages; i++)
+        scanf("%d", &referenceString[i]);
 
-    printf("Enter the capacity of frames: ");
-    scanf("%d", &capacity);
+    printf("Enter the number of frames: ");
+    scanf("%d", &numFrames);
 
-    for (int i = 0; i < capacity; i++) {
-        frame[i] = -1;
-        page_age[i] = 0;
+    for (int i = 0; i < numFrames; i++) {
+        frames[i] = -1;
+        pageAges[i] = 0;
     }
 
-    for (int i = 0; i < n; i++) {
-        int page_found = 0;
+    for (int i = 0; i < numPages; i++) {
+        int pageFound = 0;
         
-        for (int j = 0; j < capacity; j++) {
-            if (frame[j] == pages[i]) {
-                page_found = 1;
-                page_age[j] = i + 1;
+        for (int j = 0; j < numFrames; j++) {
+            if (frames[j] == referenceString[i]) {
+                pageFound = 1;
+                pageAges[j] = i + 1;
                 break;
             }
         }
 
-        if (!page_found) {
-            int lru_index = 0, min_age = page_age[0];
-            for (int j = 1; j < capacity; j++) {
-                if (page_age[j] < min_age) {
-                    lru_index = j;
-                    min_age = page_age[j];
+        if (!pageFound) {
+            int lruIndex = 0, minAge = pageAges[0];
+            for (int j = 1; j < numFrames; j++) {
+                if (pageAges[j] < minAge) {
+                    lruIndex = j;
+                    minAge = pageAges[j];
                 }
             }
-            frame[lru_index] = pages[i];
-            page_age[lru_index] = i + 1;
-            page_faults++;
+            frames[lruIndex] = referenceString[i];
+            pageAges[lruIndex] = i + 1;
+            pageFaults++;
         }
 
-        printf("RS: %d | ", pages[i]);
-        for (int j = 0; j < capacity; j++) {
-            if (frame[j] == -1)
+        printf("RS: %d | ", referenceString[i]);
+        for (int j = 0; j < numFrames; j++) {
+            if (frames[j] == -1)
                 printf("_ ");
             else
-                printf("%d ", frame[j]);
+                printf("%d ", frames[j]);
         }
         printf("\n");
     }
 
-    printf("Page faults: %d\n", page_faults);
-    printf("Page Hits: %d\n", n - page_faults);
-    printf("Page Fault Ratio: %.2f%%\n", (float)page_faults * 100 / n);
-    printf("Page Hit Ratio: %.2f%%\n", (float)(n - page_faults) * 100 / n);
+    int pageHits = numPages - pageFaults;
+
+    printf("Page faults: %d\n", pageFaults);
+    printf("Page Hits: %d\n", pageHits);
+    printf("Page Fault Ratio: %.2f%%\n", (float)pageFaults * 100 / numPages);
+    printf("Page Hit Ratio: %.2f%%\n", (float)pageHits * 100 / numPages);
 
     return 0;
 }
-
-
-/*
-START
-Initialize variables pages, n, capacity, frame, page_faults, and page_age.
-Input the number of pages (n), the reference string (RS) of pages (pages), and the capacity of frames (capacity).
-Initialize the frames frame with -1 and the page ages page_age with 0 to indicate all frames are initially empty.
-Loop through the reference string (pages) and simulate the page replacement process:
-a. Check if the current page is already present in any frame.
-b. If the page is not found, find the least recently used (LRU) page and replace it.
-c. Update the page age for the selected frame.
-d. Increment the page_faults counter for each page fault.
-e. Print the reference string (RS) and the current state of the frames after each page reference.
-Print the statistics: total page faults, page hits, page fault ratio, and page hit ratio.
-STOP
-*/
-
-/*
-Enter the number of pages: 10
-Enter the reference string (RS): 7 0 1 2 0 3 0 4 2 3
-Enter the capacity of frames: 4
-RS: 7 | 7 _ _ _
-RS: 0 | 7 0 _ _
-RS: 1 | 7 0 1 _
-RS: 2 | 7 0 1 2
-RS: 0 | 7 0 1 2
-RS: 3 | 3 0 1 2
-RS: 0 | 3 0 1 2
-RS: 4 | 3 0 4 2
-RS: 2 | 3 0 4 2
-RS: 3 | 3 0 4 2
-Page faults: 6
-Page Hits: 4
-Page Fault Ratio: 60.00%
-Page Hit Ratio: 40.00%
-*/

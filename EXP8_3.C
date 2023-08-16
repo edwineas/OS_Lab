@@ -1,109 +1,69 @@
 #include <stdio.h>
 
 int main() {
-    int total_frames, total_pages, hit = 0;
-    int m, n, page, flag, k, minimum_time, temp;
-    int pages[20], frames[10], arr[20], time[20];
+    int referenceString[100], numPages, numFrames, frames[10], pageFaults = 0, pageAges[10] = {0}, pageFrequencies[10] = {0};
 
     printf("Enter the number of pages: ");
-    scanf("%d", &total_pages);
+    scanf("%d", &numPages);
 
-    printf("Enter the capacity of frames: ");
-    scanf("%d", &total_frames);
+    printf("Enter the reference string: ");
+    for (int i = 0; i < numPages; i++)
+        scanf("%d", &referenceString[i]);
 
-    for (m = 0; m < total_frames; m++)
-        frames[m] = -1;
+    printf("Enter the number of frames: ");
+    scanf("%d", &numFrames);
 
-    for (m = 0; m < 25; m++)
-        arr[m] = -1;
+    for (int i = 0; i < numFrames; i++)
+        frames[i] = -1;
 
-    printf("Enter the reference String (RS): ");
-    for (m = 0; m < total_pages; m++)
-        scanf("%d", &pages[m]);
+    for (int i = 0; i < numPages; i++) {
+        int pageFound = 0;
 
-    for (m = 0; m < total_pages; m++) {
-        arr[pages[m]]++;
-        time[pages[m]] = m;
-        flag = 0;
-        k = frames[0];
-
-        for (n = 0; n < total_frames; n++) {
-            if (frames[n] == -1 || frames[n] == pages[m]) {
-                if (frames[n] != -1)
-                    hit++;
-                flag = 1;
-                frames[n] = pages[m];
+        for (int j = 0; j < numFrames; j++) {
+            if (frames[j] == referenceString[i]) {
+                pageFound = 1;
+                pageFrequencies[j]++;
                 break;
             }
-            if (arr[k] > arr[frames[n]])
-                k = frames[n];
         }
 
-        if (!flag) {
-            minimum_time = 25;
-            for (n = 0; n < total_frames; n++) {
-                if (arr[frames[n]] == arr[k] && time[frames[n]] < minimum_time) {
-                    temp = n;
-                    minimum_time = time[frames[n]];
+        if (!pageFound) {
+            int lfuIndex = 0, minFrequency = pageFrequencies[0];
+            int maxAge = pageAges[0]; // Initialize maxAge with the age of the first frame
+            for (int j = 1; j < numFrames; j++) {
+                if (pageFrequencies[j] < minFrequency || (pageFrequencies[j] == minFrequency && pageAges[j] > maxAge)) {
+                    lfuIndex = j;
+                    minFrequency = pageFrequencies[j];
+                    maxAge = pageAges[j]; // Update maxAge when frequency ties
                 }
             }
-            arr[frames[temp]] = 0;
-            frames[temp] = pages[m];
+            frames[lfuIndex] = referenceString[i];
+            pageFrequencies[lfuIndex] = 1;
+            pageFaults++;
+            pageAges[lfuIndex]=0;
         }
 
-        printf("RS: %d | ", pages[m]);
-        for (int j = 0; j < total_frames; j++) {
+        for (int j = 0; j < numFrames; j++) {
+            if (frames[j] != -1)
+                pageAges[j]++;
+        }
+
+        printf("RS: %d | ", referenceString[i]);
+        for (int j = 0; j < numFrames; j++) {
             if (frames[j] == -1)
-                printf(" _");
+                printf("_ ");
             else
-                printf(" %d", frames[j]);
+                printf("%d ", frames[j]);
         }
         printf("\n");
     }
 
-    printf("Page fault: %d \n", total_pages - hit);
-    printf("Page hit: %d\n", hit);
-    printf("Page fault ratio: %.2f%%\n", (float)(total_pages - hit) * 100 / total_pages);
-    printf("Page hit ratio: %.2f%%\n", (float)hit * 100 / total_pages);
+    int pageHits = numPages - pageFaults;
+
+    printf("Page faults: %d\n", pageFaults);
+    printf("Page Hits: %d\n", pageHits);
+    printf("Page Fault Ratio: %.2f%%\n", (float)pageFaults * 100 / numPages);
+    printf("Page Hit Ratio: %.2f%%\n", (float)pageHits * 100 / numPages);
 
     return 0;
 }
-
-
-/*
-START
-Initialize variables total_frames, total_pages, hit, m, n, page, flag, k, minimum_time, and temp.
-Initialize arrays pages, frames, arr, and time.
-Input the number of pages (total_pages), the capacity of frames (total_frames), and the reference string (RS) of pages (pages).
-Initialize the frames frames with -1 and the arrays arr and time with -1 to indicate all frames and page occurrences are initially empty.
-Loop through the reference string (pages) and simulate the page replacement process:
-a. Update the occurrence count of each page in the array arr and the last accessed time in the array time.
-b. Check if the current page is already present in any frame.
-c. If the page is found, update the hit counter and continue to the next page reference.
-d. If there's a free frame or no frame contains the current page, allocate it to an available frame or replace the least recently used (LRU) page in the frames.
-e. Print the reference string (RS) and the current state of the frames after each page reference.
-Print the statistics: total page faults, page hits, page fault ratio, and page hit ratio.
-STOP
-*/
-
-/*
-Enter the number of pages: 12
-Enter the capacity of frames: 3
-Enter the reference String (RS): 7 0 1 2 0 3 0 4 2 3 1 2
-RS: 7 |  7 _ _
-RS: 0 |  7 0 _
-RS: 1 |  7 0 1
-RS: 2 |  2 0 1
-RS: 0 |  2 0 1
-RS: 3 |  2 0 3
-RS: 0 |  2 0 3
-RS: 4 |  4 0 3
-RS: 2 |  4 0 2
-RS: 3 |  3 0 2
-RS: 1 |  3 0 1
-RS: 2 |  2 0 1
-Page fault: 10
-Page hit: 2
-Page fault ratio: 83.33%
-Page hit ratio: 16.67%
-*/
