@@ -36,7 +36,7 @@ int main() {
                     lruIndex = j;
                     minAge = pageAges[j];
                 }
-            }
+            } // lruIndex now contains the index of the least recently used page
             frames[lruIndex] = referenceString[i];
             pageAges[lruIndex] = i + 1;
             pageFaults++;

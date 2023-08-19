@@ -1,3 +1,4 @@
+// Title: FIFO Page Replacement Algorithm
 #include <stdio.h>
 
 int main() {
@@ -13,21 +14,21 @@ int main() {
     printf("Enter the number of frames: ");
     scanf("%d", &numFrames);
 
-    for (int i = 0; i < numFrames; i++) {
-        frames[i] = -1;
+    for (int i = 0; i < numFrames; i++) { 
+        frames[i] = -1; // -1 indicates empty frame
     }
 
-    for (int i = 0; i < numPages; i++) {
-        int pageFound = 0;
+    for (int i = 0; i < numPages; i++) { // for each page in reference string
+        int pageFound = 0; // 0 indicates page not found
 
         for (int j = 0; j < numFrames; j++) {
-            if (frames[j] == referenceString[i]) {
-                pageFound = 1;
+            if (frames[j] == referenceString[i]) { // if page found in frame
+                pageFound = 1; // 1 indicates page found
                 break;
             }
         }
 
-        if (!pageFound) {
+        if (!pageFound) { // if page not found in frame
             frames[frameIndex] = referenceString[i];
             frameIndex = (frameIndex + 1) % numFrames;
             pageFaults++;
