@@ -14,7 +14,7 @@ int main() {
     scanf("%d", &numFrames);
 
     for (int i = 0; i < numFrames; i++)
-        frames[i] = -1;
+        frames[i] = -1; // -1 indicates empty frame
 
     for (int i = 0; i < numPages; i++) {
         int pageFound = 0;
