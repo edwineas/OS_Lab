@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() {
-    int ioq[20], i, n, sd;
+    int ioq[20], i, n, sd,head;
     float seek = 0, avgs;
 
     printf("Enter the number of requests: ");
@@ -13,7 +13,8 @@ int main() {
         scanf("%d", &ioq[i]);
 
     printf("Enter the initial head position: ");
-    scanf("%d", &ioq[0]);
+    scanf("%d", &head);
+    ioq[0] = head;
 
     printf("Order of requests served:");
     for (i = 0; i < n; i++) {

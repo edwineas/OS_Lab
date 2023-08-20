@@ -1,16 +1,16 @@
 #include <stdio.h>
 
 int main() {
-    int ioq[20], i, n, j, ihead, temp, scan, tot;
+    int ioq[20], i, n, j, head, temp, scan, tot;
     float seek = 0, avgs;
 
     printf("Enter the number of requests: ");
     scanf("%d", &n);
 
     printf("Enter the initial head position: ");
-    scanf("%d", &ihead);
+    scanf("%d", &head);
 
-    ioq[0] = ihead;
+    ioq[0] = head;
     ioq[1] = 0;
     n += 2;
 
@@ -29,7 +29,7 @@ int main() {
     ioq[n] = ioq[n - 1];
 
     for (i = 0; i < n; i++)
-        if (ihead == ioq[i]) {
+        if (head == ioq[i]) {
             scan = i;
             break;
         }
