@@ -2,8 +2,7 @@
 #include <stdio.h>
 
 int main() {
-    int ioq[20], i, n, sd,head;
-    float seek = 0, avgs;
+    int ioq[20], i, n, sd,head,seek;
 
     printf("Enter the number of requests: ");
     scanf("%d", &n);
@@ -25,9 +24,8 @@ int main() {
         printf("%d --> ", ioq[i]);
     }printf("%d >\n", ioq[n]);
 
-    avgs = seek / n;
     printf("Total Seek time : %.2f\n", seek);
-    printf("Average seek time :  %.2f\n", avgs);
+    printf("Average seek time :  %.2f\n", (float) seek / n);
 
     return 0;
 }
