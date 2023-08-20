@@ -3,10 +3,10 @@
 int main() {
     int referenceString[100], numPages, numFrames, frames[10], pageFaults = 0, pageAges[10] = {0}, pageFrequencies[10] = {0};
 
-    printf("Enter the number of pages: ");
+    printf("Enter the number of pages: "); // 10
     scanf("%d", &numPages);
 
-    printf("Enter the reference string: ");
+    printf("Enter the reference string: "); // 1 2 3 4 1 2 5 1 2 3 4 5
     for (int i = 0; i < numPages; i++)
         scanf("%d", &referenceString[i]);
 

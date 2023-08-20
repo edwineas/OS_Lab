@@ -17,4 +17,5 @@ Welcome to the OS Lab repository! This repository contains the code and resource
 | 8.1 | Page Replacement Algorithms :FIFO | [Link](EXP8_1.C/) |
 | 8.2 | Page Replacement Algorithms :LRU | [Link](EXP8_2.C/) |
 | 8.3 | Page Replacement Algorithms :LFU | [Link](EXP8_3.C/) |
+| 9 | Banker’s Algorithm for Deadlock Avoidance | [Link](EXP9.c/) |
 
