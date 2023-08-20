@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 int main() {
-    int ioq[20], i, n, sd,head,seek;
-
+    int i, n, sd,head,seek=0;
     printf("Enter the number of requests: ");
     scanf("%d", &n);
+    int ioq[n];
 
     printf("Enter the I/O queue requests:");
     for (i = 1; i <= n; i++)
@@ -24,8 +24,8 @@ int main() {
         printf("%d --> ", ioq[i]);
     }printf("%d >\n", ioq[n]);
 
-    printf("Total Seek time : %.2f\n", seek);
-    printf("Average seek time :  %.2f\n", (float) seek / n);
+    printf("Total Seek time : %d\n", seek);
+    printf("Average seek time :  %.2f\n", (float)seek / n);
 
     return 0;
 }
