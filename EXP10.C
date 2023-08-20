@@ -31,7 +31,7 @@ int main() {
         }
     }
 
-    // Calculate the available resources
+    // Calculate the available resources 
     for (j = 0; j < numResources; j++) {
         availableResources[j] = totalResources[j];
         for (i = 0; i < numProcesses; i++) {
@@ -72,7 +72,8 @@ int main() {
 
     if (deadlockDetected) {
         printf("Deadlock detected\n");
-    } else {
+    } 
+    else {
         printf("No deadlock possible\n");
     }
 
