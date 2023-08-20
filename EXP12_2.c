@@ -1,34 +1,35 @@
 #include <stdio.h>
 
 int main() {
-    int ioq[20], i, n, j, head, temp, scan, tot;
-    float seek = 0, avgs;
+    int i, n, j, head, temp, scan, tot, max;
+    float seek, avgs;
 
     printf("Enter the number of requests: ");
     scanf("%d", &n);
+    int ioq[n + 3];
 
     printf("Enter the initial head position: ");
     scanf("%d", &head);
-
     ioq[0] = head;
     ioq[1] = 0;
-    n += 2;
+
+    printf("Enter the maximum track limit : ");
+    scanf("%d", &max);
+    ioq[n + 2] = max;
 
     printf("Enter the I/O queue requests: ");
-    for (i = 2; i < n; i++)
+    for (i = 2; i <= n+1; i++)
         scanf("%d", &ioq[i]);
 
-    for (i = 0; i < n - 1; i++)
-        for (j = 0; j < n - 1; j++)
-            if (ioq[j] > ioq[j + 1]) {
-                temp = ioq[j];
-                ioq[j] = ioq[j + 1];
-                ioq[j + 1] = temp;
-            }
+        for (i=0;i<n+1;i++)
+            for (j=0;j<n+1-i;j++)
+                if (ioq[j]>ioq[j+1]) {
+                    temp=ioq[j];
+                    ioq[j]=ioq[j+1];
+                    ioq[j+1]=temp;
+                }
 
-    ioq[n] = ioq[n - 1];
-
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n+2; i++) // find the position of head in the queue
         if (head == ioq[i]) {
             scan = i;
             break;
@@ -37,24 +38,16 @@ int main() {
     printf("Order of requests served: ");
     tot = 0;
 
-    for (i = scan; i >= 0; i--) {
-        tot = ioq[i] - ioq[i - 1];
-        if (i == 0)
-            tot = ioq[i] - ioq[scan + 1];
-        if (tot < 0)
-            tot = tot * -1;
-        printf("%d--> ", ioq[i]);
+    for(i=scan;i<=n+2;i++){ ;
+        printf("%d --> ",ioq[i]);
     }
 
-    for (i = scan + 1; i < n; i++) {
-        tot = ioq[i + 1] - ioq[i];
-        if (tot < 0)
-            tot = tot * -1;
-        printf("%d--> ", ioq[i]);
+    for(i=scan-1;i>0;i--){
+        printf("%d --> ",ioq[i]);
     }
 
-    seek = ioq[scan] + ioq[n - 1];
-    avgs = seek / (n - 2);
+    seek = (max - head) + (max - ioq[1]);
+    avgs = seek / n;
 
     printf("\nTotal Seek time:\t%.2f\n", seek);
     printf("Average seek time:\t%.2f\n", avgs);

@@ -5,7 +5,7 @@ int main() {
     int i, n, sd,head,seek=0;
     printf("Enter the number of requests: ");
     scanf("%d", &n);
-    int ioq[n];
+    int ioq[n+1];
 
     printf("Enter the I/O queue requests:");
     for (i = 1; i <= n; i++)
