@@ -9,7 +9,7 @@
             printf("Enter the arrival time and burst time of P%d: ", i);
             scanf("%d%d", &a[i][1], &a[i][2]);
         }
-        for (i = 0; i < n - 1; i++)
+        for (i = 0; i < n - 1; i++) //sorting according to arrival time
             for (j = 0; j < n - 1 - i; j++)
                 if (a[j][1] > a[j + 1][1])
                     for (k = 1; k <= 2; k++) {
