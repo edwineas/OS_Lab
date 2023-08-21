@@ -1,47 +1,37 @@
-#include <stdio.h>
-
-int main() {
-    int bsize[10], psize[10], bno, pno, flags[10], allocation[10], i, j;
-    
-    for (i = 0; i < 10; i++) {
-        flags[i] = 0;
-        allocation[i] = -1;
-    }
-    
-    printf("Enter the number of blocks: ");
-    scanf("%d", &bno);
-    
-    printf("Enter the size of each block: ");
-    for (i = 0; i < bno; i++) {
-        scanf("%d", &bsize[i]);
-    }
-    
-    printf("Enter the number of processes: ");
-    scanf("%d", &pno);
-    
-    printf("Enter the size of each process: ");
-    for (i = 0; i < pno; i++) {
-        scanf("%d", &psize[i]);
-    }
-    
-    for (int i = 0; i < pno; i++) {
-        for (int j = 0; j < bno; j++) {
-            if (!flags[j] && bsize[j] >= psize[i]) {
-                allocation[i] = j;
-                flags[j] = 1; // Mark the block as allocated
-                bsize[j] -= psize[i];
-                break;
-            }
-        }
-    }
-    
-    printf("\nProcess no\tProcess size\tBlock no\n");
-    for (int i = 0; i < pno; i++) {
-        printf("%d\t\t%d\t\t", i + 1, psize[i]);
-        if (allocation[i] != -1) {
-            printf("%d\n", allocation[i] + 1);
-        } else {
-            printf("Not Allocated\n");
-        }
-    }
+#include<stdio.h>
+int main(){
+	int nb, np,i,j;
+	printf("Enter the number of blocks : ");
+	scanf("%d",&nb);
+	int b[nb],flag[nb];
+	printf("Enter the size of each blocks : ");
+	for(i=0;i<nb;i++){
+		scanf("%d",&b[i]);
+		flag[i]=0;
+	}
+	printf("Enter the number of process : ");
+	scanf("%d",&np);
+	int p[np],allocation[np];
+	printf("Enter the size of each process : ");
+	for(i=0;i<np;i++){
+		scanf("%d",&p[i]);
+		allocation[i]=-1;
+	}
+	for(i=0;i<np;i++){
+		for(j=0;j<nb;j++){
+			if((flag[j]!=1)&&(p[i]<=b[j])){
+				allocation[i]=j;
+				flag[j]=1;
+				break;
+			}
+		}
+	}
+	printf("Process No\tProcess Size\tBlock Allocated\n");
+	for(i=0;i<np;i++){
+		printf("%d\t\t%d\t\t",i+1,p[i]);
+		if(allocation[i]==-1)
+			printf("Not Allocated");
+		else
+			printf("%d\n",allocation[i]+1);
+	}
 }
