@@ -11,7 +11,7 @@ Welcome to the OS Lab repository! This repository contains the code and resource
 | 3.1 | Shell Programming : Swap Two Numbers | [Link](swap.sh/) |
 | 3.2 | Shell Programming :Fahrenheit To Celsius | [Link](ftoc.sh/) |
 | 3.3 | Shell Programming :Sum Of Two Numbers | [Link](sum.sh/) |
-| 4.1 | CPU Scheduling :FCFS | [Link](EXP4_1.c/) |
+| 4.1 | CPU Scheduling :FCFS | [Link](exp4_1.c/) |
 | 4.2 | CPU Scheduling :SJF | [Link](exp4_2.c/) |
 | 4.3 | CPU Scheduling :priority | [Link](exp_3.c/) |
 | 4.4 | CPU Scheduling :RRS | [Link](exp_4.c/) |
