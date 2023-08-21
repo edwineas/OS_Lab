@@ -30,7 +30,7 @@ int main()
 	a[0][4]=a[0][1]+a[0][2];
 	a[0][5]=a[0][4]-a[0][1];
 	a[0][6]=a[0][5]-a[0][2];
- 	for(i=1;i<n-1;i++) //sorting in priority time process
+ 	for(i=0;i<n-1;i++) //sorting in priority time process
 	{
 		for(j=1;j<n-1-i;j++)
 		{

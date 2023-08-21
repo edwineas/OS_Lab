@@ -15,8 +15,8 @@ Welcome to the OS Lab repository! This repository contains the code and resource
 | 4.2 | CPU Scheduling :SJF | [Link](exp4_2.c/) |
 | 4.3 | CPU Scheduling :priority | [Link](EXP4_3.c/) |
 | 4.4 | CPU Scheduling :RRS | [Link](EXP4_4.c/) |
-| 4.4 | Inter Process Communication :P1 | [Link](exp5_1.c/) |
-| 4.4 | Inter Process Communication :P2 | [Link](exp5_2.c/) |
+| 5.1 | Inter Process Communication :P1 | [Link](exp5_1.c/) |
+| 5.2 | Inter Process Communication :P2 | [Link](exp5_2.c/) |
 | 7.1 | Memory Allocation Methods :First Fit | [Link](EXP7_1.C/) |
 | 7.2 | Memory Allocation Methods :Best Fit | [Link](EXP7_2.C/) |
 | 7.3 | Memory Allocation Methods :Worst Fit | [Link](EXP7_3.C/) |

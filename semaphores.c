@@ -16,7 +16,7 @@ int signal(int s){
 void producer(){
 	m=wait(m);
 	e=wait(e);
-	f=signal(f);
+	f=signal(f); 
 	printf("Producer produces item \n");
 	m=signal(m);
 }
