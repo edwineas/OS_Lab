@@ -13,8 +13,8 @@ Welcome to the OS Lab repository! This repository contains the code and resource
 | 3.3 | Shell Programming :Sum Of Two Numbers | [Link](sum.sh/) |
 | 4.1 | CPU Scheduling :FCFS | [Link](exp4_1.c/) |
 | 4.2 | CPU Scheduling :SJF | [Link](exp4_2.c/) |
-| 4.3 | CPU Scheduling :priority | [Link](exp_3.c/) |
-| 4.4 | CPU Scheduling :RRS | [Link](exp_4.c/) |
+| 4.3 | CPU Scheduling :priority | [Link](exp4_3.c/) |
+| 4.4 | CPU Scheduling :RRS | [Link](exp4_4.c/) |
 | 7.1 | Memory Allocation Methods :First Fit | [Link](EXP7_1.C/) |
 | 7.2 | Memory Allocation Methods :Best Fit | [Link](EXP7_2.C/) |
 | 7.3 | Memory Allocation Methods :Worst Fit | [Link](EXP7_3.C/) |
