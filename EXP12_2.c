@@ -21,13 +21,13 @@ int main() {
     for (i = 2; i <= n+1; i++)
         scanf("%d", &ioq[i]);
 
-        for (i=0;i<n+1;i++)
-            for (j=0;j<n+1-i;j++)
-                if (ioq[j]>ioq[j+1]) {
-                    temp=ioq[j];
-                    ioq[j]=ioq[j+1];
-                    ioq[j+1]=temp;
-                }
+    for (i=0;i<n+1;i++)
+        for (j=0;j<n+1-i;j++)
+            if (ioq[j]>ioq[j+1]) {
+                temp=ioq[j];
+                ioq[j]=ioq[j+1];
+                ioq[j+1]=temp;
+            }
 
     for (i = 0; i < n+2; i++) // find the position of head in the queue
         if (head == ioq[i]) {
@@ -36,7 +36,6 @@ int main() {
         }
 
     printf("Order of requests served: ");
-    tot = 0;
 
     for(i=scan;i<=n+2;i++){ ;
         printf("%d --> ",ioq[i]);

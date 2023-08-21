@@ -36,7 +36,6 @@ int main() {
         }
 
     printf("Order of requests served: ");
-    tot = 0;
 
     for(i=scan;i<=n+2;i++){ ;
         printf("%d --> ",ioq[i]);
